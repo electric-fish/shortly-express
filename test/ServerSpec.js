@@ -513,7 +513,7 @@ describe('', function() {
         var queryString = 'SELECT * FROM sessions';
         db.query(queryString, function(error, sessions) {
           if (error) { return done(error); }
-          expect(sessions.length).to.equal(1);
+          expect(sessions. length).to.equal(1);
           expect(sessions[0].userId).to.be.null;
           done();
         });
