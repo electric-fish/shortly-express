@@ -5,6 +5,7 @@ const partials = require('express-partials');
 const bodyParser = require('body-parser');
 const Auth = require('./middleware/auth');
 const models = require('./models');
+// const cookieParser = require('./middleware/cookieParser');
 
 const app = express();
 
@@ -15,7 +16,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 
-
+app.use(require('./middleware/cookieParser'));
+app.use(Auth.createSession);
 
 app.get('/',
   (req, res) => {
@@ -123,8 +125,18 @@ app.post('/login',
           res.redirect('/login');
         }
         //fill in session, print cookie ??
+        // console.log('res in login', res);
         res.redirect('/');
+        // return models.Users.get({ username });
       })
+      // .then((result) => {
+      //   // res.session[userId] = result.id;
+      //   // console.log('in login: ', req);
+      //   // console.log(result);
+
+
+      //   res.redirect('/');
+      // })
       // .error(error => {
       // console.log('went to error instead');
       // res.status(500).send(error);

@@ -45,7 +45,7 @@ class Sessions extends Model {
       });
   }
 
-  /**
+  /**cd 
    * Creates a new session. Within this function, a hash is randomly generated.
    * @returns {Promise<Object>} A promise that is fulfilled with the results of
    * an insert query or rejected with the error that occured.

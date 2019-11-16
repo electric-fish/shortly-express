@@ -1,6 +1,7 @@
 const parseCookies = (req, res, next) => {
   if ((req.headers.cookie) !== undefined) { // if cookie not found, ask user to login
     let cookiesStr = req.headers.cookie;
+    // console.log('cookie: ', cookiesStr);
     let parsedCookieArr = cookiesStr.split('; ');
     for (var i = 0; i < parsedCookieArr.length; i++) {
       let splitCookie = parsedCookieArr[i].split('=');
