@@ -6,6 +6,7 @@ var httpMocks = require('node-mocks-http');
 var app = require('../server/app.js');
 var schema = require('../server/db/config.js');
 var port = 4568;
+// var port = 3000;
 
 /************************************************************/
 // Mocha doesn't have a way to designate pending before blocks.
@@ -39,8 +40,10 @@ describe('', function() {
     /* TODO: Update user and password if different than on your local machine            */
     /*************************************************************************************/
     db = mysql.createConnection({
-      user: 'student',
-      password: 'student',
+      // user: 'student',
+      // password: 'student',
+      user: 'root',
+      password: 'plantlife',
       database: 'shortly'
     });
 
@@ -123,7 +126,7 @@ describe('', function() {
     });
   });
 
-  xdescribe('Account Creation:', function() {
+  describe('Account Creation:', function() {
 
     it('signup creates a new user record', function(done) {
       var options = {
@@ -208,7 +211,7 @@ describe('', function() {
     });
   });
 
-  xdescribe('Account Login:', function() {
+  describe('Account Login:', function() {
 
     beforeEach(function(done) {
       var options = {
@@ -277,7 +280,7 @@ describe('', function() {
     });
   });
 
-  xdescribe('Sessions Schema:', function() {
+  describe('Sessions Schema:', function() {
     it('contains a sessions table', function(done) {
       var queryString = 'SELECT * FROM sessions';
       db.query(queryString, function(err, results) {
@@ -325,7 +328,7 @@ describe('', function() {
     });
   });
 
-  xdescribe('Express Middleware', function() {
+  describe('Express Middleware', function() {
     var cookieParser = require('../server/middleware/cookieParser.js');
     var createSession = require('../server/middleware/auth.js').createSession;
 
